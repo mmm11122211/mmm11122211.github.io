@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mia Costner | Data Visualization & UX Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF1F8; --surface:#FFFFFF; --ink:#24103A; --muted:#5E4A78; --purple:#5B21B6; --pink:#FF2E93; --pinktext:#B8145F; --hero:#2A0F4A; --dot:rgba(255,46,147,.16); --line:#E2C9F2;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#190A2C; --surface:#26123F; --ink:#F6E9FF; --muted:#CDB6E6; --purple:#C4A1FF; --pinktext:#FF7AB8; --hero:#0E0519; --dot:rgba(255,46,147,.14); --line:#4A2A70;}
+}
+:root[data-theme="dark"]{--bg:#190A2C; --surface:#26123F; --ink:#F6E9FF; --muted:#CDB6E6; --purple:#C4A1FF; --pinktext:#FF7AB8; --hero:#0E0519; --dot:rgba(255,46,147,.14); --line:#4A2A70;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:400 17px/1.65 "Nunito Sans",system-ui,sans-serif;
+  background:radial-gradient(circle,var(--dot) 4px,transparent 4.5px) 0 0/32px 32px,radial-gradient(circle,var(--dot) 4px,transparent 4.5px) 16px 16px/32px 32px,var(--bg)}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;line-height:1.05;margin:0}
+a{color:var(--pinktext)}
+a:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+header{position:relative;background:radial-gradient(circle,rgba(255,46,147,.35) 5px,transparent 5.5px) 0 0/36px 36px,radial-gradient(circle,rgba(255,46,147,.35) 5px,transparent 5.5px) 18px 18px/36px 36px,var(--hero);color:#FFF4FA;padding:72px 24px 88px;text-align:center;margin-bottom:24px}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;background:radial-gradient(circle at 14px 0,var(--hero) 14px,transparent 14.5px) 0 0/28px 14px repeat-x}
+header::before{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--pink)}
+.bow{width:76px;height:auto;margin:0 auto 12px;display:block}
+h1{font-size:clamp(3.2rem,11vw,6.2rem);font-weight:700;letter-spacing:.01em}
+.role{font:italic 600 clamp(1.3rem,3.5vw,1.8rem)/1.2 "Cormorant Garamond",serif;color:#FF9FCC;margin:12px 0 22px}
+.lede{max-width:34em;margin:0 auto 28px;color:#EBD9FA;font-size:1.08rem}
+.links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.links a{padding:10px 22px;border:2px solid var(--pink);border-radius:999px;font-weight:600;text-decoration:none;color:#FFF4FA}
+.links a.primary{background:var(--pink);color:#2A0F4A}
+.links a:hover{background:#FF6AB4;color:#2A0F4A}
+main{max-width:880px;margin:0 auto;padding:40px 22px 56px}
+section{margin-bottom:56px}
+h2{font-size:2.3rem;font-weight:700;color:var(--purple);margin-bottom:6px}
+.rule{height:12px;margin-bottom:26px;background:radial-gradient(circle at 6px 6px,var(--pink) 3px,transparent 3.5px) 0 0/18px 12px repeat-x}
+.card{background:var(--surface);border:2px solid var(--purple);border-radius:20px;padding:24px 26px;margin-bottom:24px;box-shadow:7px 7px 0 var(--pink)}
+.card h3{font-size:1.7rem;color:var(--ink)}
+.card .tools{display:inline-block;margin:8px 0 12px;padding:2px 12px;border-radius:999px;background:var(--pink);color:#2A0F4A;font-weight:600;font-size:.88rem}
+.card ul,.job ul{margin:0;padding:0;list-style:none}
+.card li,.job li{position:relative;padding-left:26px;margin-bottom:8px;max-width:64ch}
+.card li::before,.job li::before{content:"♥";position:absolute;left:0;top:0;color:var(--pink);font-size:.95rem}
+.job{margin-bottom:30px}
+.job h3{font-size:1.6rem}
+.job .meta{color:var(--muted);font-weight:600;margin:2px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:0;list-style:none}
+.chips li{padding:4px 14px;border:2px solid var(--purple);border-radius:999px;background:var(--surface);font-weight:600;font-size:.95rem}
+.skillgroup h3{font-size:1.35rem;margin-bottom:8px;color:var(--pinktext)}
+.edu p{margin:4px 0;max-width:62ch}
+footer{text-align:center;padding:34px 22px 48px;color:var(--muted)}
+footer .rule{max-width:420px;margin:0 auto 18px}
+@media (max-width:560px){.card{padding:20px 18px;box-shadow:5px 5px 0 var(--pink)}}
+</style>
+</head>
+<body>
+<header>
+  <svg class="bow" viewBox="0 0 80 48" aria-hidden="true"><path d="M40 24 L6 6 Q-2 24 6 42 Z" fill="#FF2E93"/><path d="M40 24 L74 6 Q82 24 74 42 Z" fill="#FF2E93"/><rect x="32" y="16" width="16" height="16" rx="6" fill="#C4A1FF"/></svg>
+  <h1>Mia Costner</h1>
+  <p class="role">Data visualization &amp; UX research</p>
+  <p class="lede">University of Michigan BSI student, graduating May 2027. I clean messy data, find the story in it, and design experiences people can use. Open to data analytics and UX research internships and roles.</p>
+  <div class="links">
+    <a class="primary" href="mailto:mialcostner@gmail.com">Email me</a>
+    <a href="Mia_Costner_Resume.pdf" download>Download resume</a>
+    <a href="https://linkedin.com/in/miacostner">LinkedIn</a>
+    <a href="https://github.com/mmm11122211">GitHub</a>
+  </div>
+</header>
+
+<main>
+<section id="projects">
+  <h2>Projects</h2><div class="rule"></div>
+  <article class="card">
+    <h3>Crime Perception vs. Reality Dashboard</h3>
+    <span class="tools">Tableau, Python</span>
+    <ul>
+      <li>Combined Pew Research survey data with 20 years of FBI UCR reports to compare what the public believes about crime with what the statistics show.</li>
+      <li>Built interactive time-series visualizations that highlight demographic representation gaps, including a 7% versus 19% variance.</li>
+    </ul>
+  </article>
+  <article class="card">
+    <h3>Web Analytics Strategy: Recording Academy</h3>
+    <span class="tools">Python</span>
+    <ul>
+      <li>Evaluated how site architecture changes affected traffic flow and engagement on Grammy.com and RecordingAcademy.com.</li>
+      <li>Used bounce-rate and session-duration data to recommend ways to improve cross-domain user retention.</li>
+    </ul>
+  </article>
+  <article class="card">
+    <h3>Bakery E-Commerce UX Design</h3>
+    <span class="tools">Figma, HTML/CSS</span>
+    <ul>
+      <li>Designed and prototyped a responsive e-commerce site, with user flow analysis for the Menu, Gallery, and Checkout sequences.</li>
+      <li>Built a design system covering typography, color theory, and layout constraints so the site stays consistent across devices.</li>
+    </ul>
+  </article>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2><div class="rule"></div>
+  <div class="job">
+    <h3>Data Analytics Fellow, Global Career Accelerator</h3>
+    <div class="meta">May 2025 to Jul 2025, Remote externship</div>
+    <ul>
+      <li>Cleaned and wrangled mixed-type revenue datasets in Python so downstream analysis could be trusted.</li>
+      <li>Built monthly trend analyses and visualizations that showed peak sales periods and customer behavior patterns.</li>
+      <li>Presented findings as business insights in a final stakeholder presentation.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <h3>Student Team Member, Michigan Dining</h3>
+    <div class="meta">Sep 2025 to present, Ann Arbor, MI (Operations &amp; Logistics)</div>
+    <ul>
+      <li>Keeps high-volume service running smoothly, with 100% adherence to health, safety, and operational standards at peak hours.</li>
+      <li>Coordinates with the team on inventory turnover and equipment maintenance to reduce bottlenecks in the dishroom and food service areas.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <h3>Gas Emissions Research Intern, DTE Energy</h3>
+    <div class="meta">Jun 2022 to Aug 2022, Detroit, MI</div>
+    <ul>
+      <li>Restructured legacy Google Sheets databases to standardize data entry, which significantly reduced manual reporting errors.</li>
+      <li>Researched greenhouse gas emissions and renewable energy initiatives and summarized the findings in executive briefs for non-technical leadership.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2><div class="rule"></div>
+  <div class="skillgroup"><h3>Analytics</h3>
+    <ul class="chips"><li>Python (Pandas, NumPy, Matplotlib)</li><li>SQL</li><li>Tableau</li><li>Power BI</li><li>Streamlit</li><li>Data cleaning</li></ul></div>
+  <div class="skillgroup"><h3>Design &amp; web</h3>
+    <ul class="chips"><li>Figma</li><li>User research</li><li>Usability testing</li><li>Prototyping</li><li>HTML5</li><li>CSS3</li></ul></div>
+  <div class="skillgroup"><h3>Tools</h3>
+    <ul class="chips"><li>Git/GitHub</li><li>VS Code</li><li>Excel (pivot tables, VLOOKUP)</li><li>Google Colab</li></ul></div>
+</section>
+
+<section id="education" class="edu">
+  <h2>Education</h2><div class="rule"></div>
+  <div class="card">
+    <h3>University of Michigan</h3>
+    <p>Bachelor of Science in Information, expected May 2027</p>
+    <p>Coursework: Data Manipulation, Information Architecture, User Modeling, Data-Oriented Programming, Data Exploration, Games &amp; UX, Human-Centered Interaction (HCI)</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="rule"></div>
+  <p>Let's work together: <a href="mailto:mialcostner@gmail.com">mialcostner@gmail.com</a></p>
+</footer>
+</body>
+</html>
